@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Stock</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <button onclick="window.location.href='index.html'">Volver al Menú</button>
+    </nav>
+    <h1>Gestión de Stock</h1>
+
+    <!-- Formulario de inicio de sesión -->
+    <div id="loginSection">
+        <h2>Iniciar sesión</h2>
+        <input type="text" id="username" placeholder="Nombre de usuario" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button id="loginButton">Iniciar Sesión</button>
+        <p id="loginMessage"></p>
+    </div>
+
+    <!-- Sección de gestión de stock (oculta inicialmente) -->
+    <div id="stockSection" style="display: none;">
+        <form id="stockForm">
+            <input type="text" id="nombre" placeholder="Nombre" required>
+            <input type="text" id="codigo" placeholder="Código" required>
+            <input type="text" id="ubicacion" placeholder="Ubicación" required>
+            <button type="submit">Agregar</button>
+        </form>
+        <input type="text" id="buscador" placeholder="Buscar...">
+        <table id="stockTable">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Código</th>
+                    <th>Ubicación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Se llenará con JavaScript -->
+            </tbody>
+        </table>
+        <button id="bloqueoToggle">Activar/Desactivar Edición</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
