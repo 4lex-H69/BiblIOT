@@ -3,30 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Stock</title>
+    <title>Gesti贸n de Stock</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav>
-        <button onclick="window.location.href='index.html'">Volver al Menú</button>
+        <button onclick="window.location.href='index.html'">Volver al Men煤</button>
     </nav>
-    <h1>Gestión de Stock</h1>
+    <h1>Gesti贸n de Stock</h1>
 
-    <!-- Formulario de inicio de sesión -->
-    <div id="loginSection">
-        <h2>Iniciar sesión</h2>
-        <input type="text" id="username" placeholder="Nombre de usuario" required>
-        <input type="password" id="password" placeholder="Contraseña" required>
-        <button id="loginButton">Iniciar Sesión</button>
-        <p id="loginMessage"></p>
-    </div>
-
-    <!-- Sección de gestión de stock (oculta inicialmente) -->
-    <div id="stockSection" style="display: none;">
+    <!-- Formulario de agregar stock -->
+    <div id="stockSection">
         <form id="stockForm">
             <input type="text" id="nombre" placeholder="Nombre" required>
-            <input type="text" id="codigo" placeholder="Código" required>
-            <input type="text" id="ubicacion" placeholder="Ubicación" required>
+            <input type="text" id="codigo" placeholder="C贸digo" required>
+            <input type="text" id="ubicacion" placeholder="Ubicaci贸n" required>
             <button type="submit">Agregar</button>
         </form>
         <input type="text" id="buscador" placeholder="Buscar...">
@@ -34,15 +25,15 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Código</th>
-                    <th>Ubicación</th>
+                    <th>C贸digo</th>
+                    <th>Ubicaci贸n</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Se llenará con JavaScript -->
+                <!-- Se llenar谩 con JavaScript -->
             </tbody>
         </table>
-        <button id="bloqueoToggle">Activar/Desactivar Edición</button>
+        <button id="bloqueoToggle">Activar Edici贸n</button>
     </div>
 
     <script src="app.js"></script>
