@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             row.innerHTML = `
                 <td><input type="checkbox" class="selectRow"></td>
                 <td>${item.nombre}</td>
+                <td>${item.autor}</td>
                 <td>${item.codigo}</td>
                 <td>${item.ubicacion}</td>
             `;
@@ -27,8 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const cells = row.cells;
             data.push({
                 nombre: cells[1].textContent,
-                codigo: cells[2].textContent,
-                ubicacion: cells[3].textContent
+                autor: cells[2].textContent,
+                codigo: cells[3].textContent,
+                ubicacion: cells[4].textContent
             });
         });
         localStorage.setItem('stockData', JSON.stringify(data));
@@ -45,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const nombre = document.getElementById('nombre').value;
+        const autor = document.getElementById('autor').value;
         const codigo = document.getElementById('codigo').value;
         const ubicacion = document.getElementById('ubicacion').value;
 
@@ -52,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         row.innerHTML = `
             <td><input type="checkbox" class="selectRow"></td>
             <td>${nombre}</td>
+            <td>${autor}</td>
             <td>${codigo}</td>
             <td>${ubicacion}</td>
         `;
