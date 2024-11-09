@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const row = stockTable.insertRow();
             row.innerHTML = `
                 <td><input type="checkbox" class="selectRow"></td>
-                <td>${item.nombre}</td>
+                <td>${item.titulo}</td>
                 <td>${item.autor}</td>
                 <td>${item.codigo}</td>
                 <td>${item.ubicacion}</td>
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Array.from(stockTable.rows).forEach(row => {
             const cells = row.cells;
             data.push({
-                nombre: cells[1].textContent,
+                titulo: cells[1].textContent,
                 autor: cells[2].textContent,
                 codigo: cells[3].textContent,
                 ubicacion: cells[4].textContent
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const nombre = document.getElementById('nombre').value;
+        const titulo = document.getElementById('nombre').value;
         const autor = document.getElementById('autor').value;
         const codigo = document.getElementById('codigo').value;
         const ubicacion = document.getElementById('ubicacion').value;
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const row = stockTable.insertRow();
         row.innerHTML = `
             <td><input type="checkbox" class="selectRow"></td>
-            <td>${nombre}</td>
+            <td>${titulo}</td>
             <td>${autor}</td>
             <td>${codigo}</td>
             <td>${ubicacion}</td>
