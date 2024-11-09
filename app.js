@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const stockTable = document.getElementById('stockTable').querySelector('tbody');
     const buscador = document.getElementById('buscador');
     const bloqueoToggle = document.getElementById('bloqueoToggle');
+    const eliminarSeleccionados = document.getElementById('eliminarSeleccionados');
     let isEditable = false;
 
     // Cargar datos del almacenamiento local al cargar la página
@@ -10,7 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const stockData = JSON.parse(localStorage.getItem('stockData')) || [];
         stockData.forEach(item => {
             const row = stockTable.insertRow();
-            row.innerHTML = `<td>${item.nombre}</td><td>${item.codigo}</td><td>${item.ubicacion}</td>`;
+            row.innerHTML = `
+                <td><input type="checkbox" class="selectRow"></td>
+                <td>${item.nombre}</td>
+                <td>${item.codigo}</td>
+                <td>${item.ubicacion}</td>
+            `;
         });
     }
 
@@ -20,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
         Array.from(stockTable.rows).forEach(row => {
             const cells = row.cells;
             data.push({
-                nombre: cells[0].textContent,
-                codigo: cells[1].textContent,
-                ubicacion: cells[2].textContent
+                nombre: cells[1].textContent,
+                codigo: cells[2].textContent,
+                ubicacion: cells[3].textContent
             });
         });
         localStorage.setItem('stockData', JSON.stringify(data));
@@ -43,7 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const ubicacion = document.getElementById('ubicacion').value;
 
         const row = stockTable.insertRow();
-        row.innerHTML = `<td>${nombre}</td><td>${codigo}</td><td>${ubicacion}</td>`;
+        row.innerHTML = `
+            <td><input type="checkbox" class="selectRow"></td>
+            <td>${nombre}</td>
+            <td>${codigo}</td>
+            <td>${ubicacion}</td>
+        `;
 
         guardarDatos(); // Guardar en el almacenamiento local
         stockForm.reset();
@@ -72,5 +83,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert('Contraseña incorrecta.');
             }
         }
+    });
+
+    eliminarSeleccionados.addEventListener('click', () => {
+        if (!isEditable) {
+            alert('La edición está bloqueada. Introduzca la contraseña para desbloquear.');
+            return;
+        }
+
+        const seleccionados = document.querySelectorAll('.selectRow:checked');
+        seleccionados.forEach(checkbox => {
+            const row = checkbox.closest('tr');
+            row.remove();
+        });
+
+        guardarDatos(); // Actualizar el almacenamiento local
     });
 });
