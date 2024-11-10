@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Stock</title>
     <link rel="stylesheet" href="styles.css">
-    </head>
+</head>
 <body>
     <nav>
         <button onclick="window.location.href='index.html'">Volver al Menú</button>
@@ -15,7 +15,7 @@
     <!-- Formulario de agregar stock -->
     <div id="stockSection">
         <form id="stockForm">
-            <input type="text" id="titulo" placeholder="Titulo" required>
+            <input type="text" id="nombre" placeholder="Titulo" required>
             <input type="text" id="autor" placeholder="Autor" required>
             <input type="text" id="codigo" placeholder="Código" required>
             <input type="text" id="ubicacion" placeholder="Ubicación" required>
@@ -38,9 +38,8 @@
         </table>
         <button id="bloqueoToggle">Activar Edición</button>
         <button id="eliminarSeleccionados">Eliminar Seleccionados</button>
-        <button id="verExcel">Ver Archivo Excel</button>
     </div>
-    <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+
     <script src="app.js"></script>
 </body>
 </html>
