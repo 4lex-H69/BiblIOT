@@ -2,12 +2,13 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #e9ecef; /* Fondo neutro */
+  background-color: #dfe7ec; /* Fondo de color frío */
+  color: #2c3e50; /* Texto en tono frío */
 }
 
 /* Estilo para la escena del menú (index.html) */
 .menu {
-  background-color: #2e3c46; /* Color de fondo basado en el color del logo */
+  background-color: #2e3c46; /* Color de fondo basado en el logo */
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -26,14 +27,14 @@ body {
   font-size: 1.2rem;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #5dade2; /* Azul frío */
   color: #ffffff;
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .menu button:hover {
-  background-color: #0056b3;
+  background-color: #2980b9;
 }
 
 /* Estilo para la escena de gestión (gestion.html) */
@@ -41,14 +42,14 @@ body {
   max-width: 1200px;
   margin: 40px auto;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #f0f4f8; /* Fondo frío */
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
   text-align: center;
-  color: #333;
+  color: #34495e; /* Azul grisáceo */
   margin-bottom: 20px;
 }
 
@@ -62,47 +63,70 @@ input, button {
 }
 
 button {
-  background-color: #28a745;
+  background-color: #48c9b0; /* Verde azulado frío */
   color: #ffffff;
   border: none;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #218838;
+  background-color: #1abc9c;
 }
 
 /* Botones de acción */
 .editar-btn {
-  background-color: #ffc107;
+  background-color: #f7dc6f; /* Amarillo claro */
   color: #212529;
 }
 
 .eliminar-btn {
-  background-color: #dc3545;
+  background-color: #e74c3c; /* Rojo frío */
   color: #ffffff;
 }
 
 .ver-excel-btn {
-  background-color: #17a2b8;
+  background-color: #5dade2; /* Azul frío */
   color: #ffffff;
 }
 
 .editar-btn:hover {
-  background-color: #e0a800;
+  background-color: #f4d03f;
 }
 
 .eliminar-btn:hover {
-  background-color: #c82333;
+  background-color: #c0392b;
 }
 
 .ver-excel-btn:hover {
-  background-color: #138496;
+  background-color: #2980b9;
+}
+
+/* Tabla de stock */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border: 2px solid #5dade2; /* Marco de la tabla */
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #d6dbdf; /* Borde de celdas */
+  text-align: left;
+}
+
+th {
+  background-color: #aed6f1; /* Azul claro */
+  color: #2c3e50;
+}
+
+td {
+  background-color: #eaf2f8; /* Fondo de celdas */
 }
 
 /* Estilo para la escena de créditos (creditos.html) */
 .creditos {
-  background-color: #f8f9fa;
+  background-color: #f0f4f8; /* Fondo frío */
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -112,11 +136,11 @@ button:hover {
 
 .creditos h2 {
   text-align: center;
-  color: #495057;
+  color: #34495e;
 }
 
 .creditos p {
-  color: #6c757d;
+  color: #5d6d7e;
   line-height: 1.6;
   margin: 15px 0;
 }
