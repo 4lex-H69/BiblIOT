@@ -7,7 +7,7 @@ body {
 
 /* Estilo para la escena del menú (index.html) */
 .menu {
-  background-image: url('ruta/a/tu-imagen.jpg'); /* Imagen de fondo */
+  background-image: url('fondo.png'); /* Imagen de fondo */
   background-size: cover;
   background-position: center;
   height: 100vh;
