@@ -1,6 +1,6 @@
 document.getElementById('verExcel').addEventListener('click', () => {
   // URL del archivo Excel en tu repositorio de GitHub
-  const url = 'https://raw.githubusercontent.com/tu-usuario/tu-repositorio/rama/stock.xlsx';
+  const url = 'https://github.com/4lex-H69/BiblIOT/blob/main/stock.xlsx';
 
   fetch(url)
     .then(response => response.arrayBuffer())
