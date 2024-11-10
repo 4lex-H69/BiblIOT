@@ -1,20 +1,24 @@
-// Inicializa Firebase y Firestore (asegúrate de importar los scripts en tu HTML)
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.x/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.x/firebase-firestore.js";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Configuración de Firebase
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_AUTH_DOMAIN",
-  projectId: "TU_PROJECT_ID",
-  storageBucket: "TU_STORAGE_BUCKET",
-  messagingSenderId: "TU_MESSAGING_SENDER_ID",
-  appId: "TU_APP_ID"
+  apiKey: "AIzaSyCFVPU03vSep5TvqM4CKItvRnk6RD_JiMM",
+  authDomain: "base-de-datos-bibliot.firebaseapp.com",
+  projectId: "base-de-datos-bibliot",
+  storageBucket: "base-de-datos-bibliot.firebasestorage.app",
+  messagingSenderId: "219132203224",
+  appId: "1:219132203224:web:2be4522d770c492d4607ad",
+  measurementId: "G-2HNSJ3JXEE"
 };
 
-// Inicializa Firebase y Firestore
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+const analytics = getAnalytics(app);
 
 // Función para agregar un nuevo ítem a la base de datos
 async function agregarStock(nombre, autor, codigo, ubicacion) {
