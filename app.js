@@ -1,3 +1,54 @@
+// Inicializa Firebase y Firestore (asegúrate de importar los scripts en tu HTML)
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.x/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.x/firebase-firestore.js";
+
+// Configuración de Firebase
+const firebaseConfig = {
+  apiKey: "TU_API_KEY",
+  authDomain: "TU_AUTH_DOMAIN",
+  projectId: "TU_PROJECT_ID",
+  storageBucket: "TU_STORAGE_BUCKET",
+  messagingSenderId: "TU_MESSAGING_SENDER_ID",
+  appId: "TU_APP_ID"
+};
+
+// Inicializa Firebase y Firestore
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+// Función para agregar un nuevo ítem a la base de datos
+async function agregarStock(nombre, autor, codigo, ubicacion) {
+  try {
+    await addDoc(collection(db, "stock"), {
+      nombre: nombre,
+      autor: autor,
+      codigo: codigo,
+      ubicacion: ubicacion
+    });
+    alert('Stock agregado exitosamente');
+  } catch (e) {
+    console.error("Error al agregar el documento: ", e);
+  }
+}
+
+// Función para obtener y mostrar los ítems del stock
+async function obtenerStock() {
+  const querySnapshot = await getDocs(collection(db, "stock"));
+  querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${JSON.stringify(doc.data())}`);
+    // Aquí puedes agregar código para mostrar los datos en la página
+  });
+}
+
+// Función para eliminar un ítem por ID
+async function eliminarStock(id) {
+  try {
+    await deleteDoc(doc(db, "stock", id));
+    alert('Stock eliminado exitosamente');
+  } catch (e) {
+    console.error("Error al eliminar el documento: ", e);
+  }
+}
 document.addEventListener('DOMContentLoaded', () => {
     const stockForm = document.getElementById('stockForm');
     const stockTable = document.getElementById('stockTable').querySelector('tbody');
