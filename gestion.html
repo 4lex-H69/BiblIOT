@@ -39,7 +39,29 @@
         <button id="bloqueoToggle">Activar Edición</button>
         <button id="eliminarSeleccionados">Eliminar Seleccionados</button>
     </div>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
 
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyCFVPU03vSep5TvqM4CKItvRnk6RD_JiMM",
+    authDomain: "base-de-datos-bibliot.firebaseapp.com",
+    projectId: "base-de-datos-bibliot",
+    storageBucket: "base-de-datos-bibliot.firebasestorage.app",
+    messagingSenderId: "219132203224",
+    appId: "1:219132203224:web:2be4522d770c492d4607ad",
+    measurementId: "G-2HNSJ3JXEE"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
     <script src="app.js"></script>
 </body>
 </html>
