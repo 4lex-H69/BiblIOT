@@ -1,4 +1,21 @@
- document.addEventListener('DOMContentLoaded', () => {
+document.getElementById('verExcel').addEventListener('click', () => {
+  // URL del archivo Excel en tu repositorio de GitHub
+  const url = 'https://raw.githubusercontent.com/tu-usuario/tu-repositorio/rama/stock.xlsx';
+
+  fetch(url)
+    .then(response => response.arrayBuffer())
+    .then(data => {
+      const libro = XLSX.read(data, { type: 'array' });
+      const hoja = libro.Sheets[libro.SheetNames[0]];
+      const contenido = XLSX.utils.sheet_to_html(hoja);
+      document.getElementById('contenidoExcel').innerHTML = contenido;
+    })
+    .catch(error => {
+      console.error('Error al cargar el archivo Excel:', error);
+      alert('No se pudo cargar el archivo Excel');
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
     const stockForm = document.getElementById('stockForm');
     const stockTable = document.getElementById('stockTable').querySelector('tbody');
     const buscador = document.getElementById('buscador');
