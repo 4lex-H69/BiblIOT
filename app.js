@@ -1,20 +1,3 @@
-document.getElementById('verExcel').addEventListener('click', () => {
-  // URL del archivo Excel en tu repositorio de GitHub
-  const url = 'https://github.com/4lex-H69/BiblIOT/blob/main/stock.xlsx';
-
-  fetch(url)
-    .then(response => response.arrayBuffer())
-    .then(data => {
-      const libro = XLSX.read(data, { type: 'array' });
-      const hoja = libro.Sheets[libro.SheetNames[0]];
-      const contenido = XLSX.utils.sheet_to_html(hoja);
-      document.getElementById('contenidoExcel').innerHTML = contenido;
-    })
-    .catch(error => {
-      console.error('Error al cargar el archivo Excel:', error);
-      alert('No se pudo cargar el archivo Excel');
-    });
-});
 document.addEventListener('DOMContentLoaded', () => {
     const stockForm = document.getElementById('stockForm');
     const stockTable = document.getElementById('stockTable').querySelector('tbody');
@@ -30,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const row = stockTable.insertRow();
             row.innerHTML = `
                 <td><input type="checkbox" class="selectRow"></td>
-                <td>${item.titulo}</td>
+                <td>${item.nombre}</td>
                 <td>${item.autor}</td>
                 <td>${item.codigo}</td>
                 <td>${item.ubicacion}</td>
@@ -44,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         Array.from(stockTable.rows).forEach(row => {
             const cells = row.cells;
             data.push({
-                titulo: cells[1].textContent,
+                nombre: cells[1].textContent,
                 autor: cells[2].textContent,
                 codigo: cells[3].textContent,
                 ubicacion: cells[4].textContent
@@ -63,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const titulo = document.getElementById('nombre').value;
+        const nombre = document.getElementById('nombre').value;
         const autor = document.getElementById('autor').value;
         const codigo = document.getElementById('codigo').value;
         const ubicacion = document.getElementById('ubicacion').value;
@@ -71,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const row = stockTable.insertRow();
         row.innerHTML = `
             <td><input type="checkbox" class="selectRow"></td>
-            <td>${titulo}</td>
+            <td>${nombre}</td>
             <td>${autor}</td>
             <td>${codigo}</td>
             <td>${ubicacion}</td>
