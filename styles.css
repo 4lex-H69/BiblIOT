@@ -1,28 +1,124 @@
+/* Estilos generales para todas las escenas */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #e9ecef; /* Fondo neutro */
 }
 
-.menu-container {
-    text-align: center;
-    margin-top: 50px;
+/* Estilo para la escena del menú (index.html) */
+.menu {
+  background-image: url('ruta/a/tu-imagen.jpg'); /* Imagen de fondo */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.logo {
-    width: 150px;
-    margin-bottom: 20px;
+.menu h1 {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 3rem;
 }
 
-.button-container button {
-    display: inline-block;
-    margin: 10px;
-    padding: 15px 30px;
-    font-size: 16px;
-    cursor: pointer;
+.menu button {
+  margin: 10px;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-nav button {
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    font-size: 14px;
+.menu button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo para la escena de gestión (gestion.html) */
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+input, button {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Botones de acción */
+.editar-btn {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.eliminar-btn {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
+.ver-excel-btn {
+  background-color: #17a2b8;
+  color: #ffffff;
+}
+
+.editar-btn:hover {
+  background-color: #e0a800;
+}
+
+.eliminar-btn:hover {
+  background-color: #c82333;
+}
+
+.ver-excel-btn:hover {
+  background-color: #138496;
+}
+
+/* Estilo para la escena de créditos (creditos.html) */
+.creditos {
+  background-color: #f8f9fa;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.creditos h2 {
+  text-align: center;
+  color: #495057;
+}
+
+.creditos p {
+  color: #6c757d;
+  line-height: 1.6;
+  margin: 15px 0;
 }
