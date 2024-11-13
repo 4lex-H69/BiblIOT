@@ -76,12 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
     bloqueoToggle.addEventListener('click', () => {
         if (isEditable) {
             isEditable = false;
-            bloqueoToggle.textContent = 'Activar Edición';
+            bloqueoToggle.textContent = 'Activar modo Admin';
         } else {
-            const password = prompt('Ingrese la contraseña para activar la edición:');
-            if (password === 'Alex') {
+            const password = prompt('Ingrese la contraseña para activar el modo Admin:');
+            if (password === 'WebIOT') {
                 isEditable = true;
-                bloqueoToggle.textContent = 'Desactivar Edición';
+                bloqueoToggle.textContent = 'Desactivar modo Admin';
                 alert('Edición activada.');
             } else {
                 alert('Contraseña incorrecta.');
