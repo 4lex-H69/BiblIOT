@@ -1,106 +1,56 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const stockForm = document.getElementById('stockForm');
-    const stockTable = document.getElementById('stockTable').querySelector('tbody');
-    const buscador = document.getElementById('buscador');
-    const bloqueoToggle = document.getElementById('bloqueoToggle');
-    const eliminarSeleccionados = document.getElementById('eliminarSeleccionados');
-    let isEditable = false;
-
-    // Cargar datos del almacenamiento local al cargar la página
-    function cargarDatos() {
-        const stockData = JSON.parse(localStorage.getItem('stockData')) || [];
-        stockData.forEach(item => {
-            const row = stockTable.insertRow();
-            row.innerHTML = `
-                <td><input type="checkbox" class="selectRow"></td>
-                <td>${item.nombre}</td>
-                <td>${item.autor}</td>
-                <td>${item.codigo}</td>
-                <td>${item.ubicacion}</td>
-            `;
-        });
-    }
-
-    // Guardar datos en el almacenamiento local
-    function guardarDatos() {
-        const data = [];
-        Array.from(stockTable.rows).forEach(row => {
-            const cells = row.cells;
-            data.push({
-                nombre: cells[1].textContent,
-                autor: cells[2].textContent,
-                codigo: cells[3].textContent,
-                ubicacion: cells[4].textContent
-            });
-        });
-        localStorage.setItem('stockData', JSON.stringify(data));
-    }
-
-    // Inicializar datos
-    cargarDatos();
-
-    stockForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        if (!isEditable) {
-            alert('La edición está bloqueada. Introduzca la contraseña para desbloquear.');
-            return;
-        }
-
-        const nombre = document.getElementById('nombre').value;
-        const autor = document.getElementById('autor').value;
-        const codigo = document.getElementById('codigo').value;
-        const ubicacion = document.getElementById('ubicacion').value;
-
-        const row = stockTable.insertRow();
-        row.innerHTML = `
-            <td><input type="checkbox" class="selectRow"></td>
-            <td>${nombre}</td>
-            <td>${autor}</td>
-            <td>${codigo}</td>
-            <td>${ubicacion}</td>
-        `;
-
-        guardarDatos(); // Guardar en el almacenamiento local
-        stockForm.reset();
-    });
-
-    buscador.addEventListener('input', () => {
-        const filter = buscador.value.toLowerCase();
-        Array.from(stockTable.rows).forEach(row => {
-            const cells = Array.from(row.cells);
-            const match = cells.some(cell => cell.textContent.toLowerCase().includes(filter));
-            row.style.display = match ? '' : 'none';
-        });
-    });
-
-    bloqueoToggle.addEventListener('click', () => {
-        if (isEditable) {
-            isEditable = false;
-            bloqueoToggle.textContent = 'Activar modo Admin';
-        } else {
-            const password = prompt('Ingrese la contraseña para activar el modo Admin:');
-            if (password === 'WebIOT') {
-                isEditable = true;
-                bloqueoToggle.textContent = 'Desactivar modo Admin';
-                alert('Edición activada.');
-            } else {
-                alert('Contraseña incorrecta.');
+// Función para cargar automáticamente un archivo Excel del repositorio de GitHub
+function loadExcelFile() {
+    fetch('datos_stock.xlsx') // Ruta del archivo en el repositorio
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('No se pudo cargar el archivo Excel');
             }
-        }
-    });
+            return response.arrayBuffer();
+        })
+        .then(data => {
+            // Leer el archivo con la librería XLSX
+            const workbook = XLSX.read(data, { type: 'array' });
+            const sheetName = workbook.SheetNames[0]; // Usar la primera hoja
+            const worksheet = workbook.Sheets[sheetName];
+            const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-    eliminarSeleccionados.addEventListener('click', () => {
-        if (!isEditable) {
-            alert('La edición está bloqueada. Introduzca la contraseña para desbloquear.');
-            return;
-        }
-
-        const seleccionados = document.querySelectorAll('.selectRow:checked');
-        seleccionados.forEach(checkbox => {
-            const row = checkbox.closest('tr');
-            row.remove();
+            console.log(jsonData); // Verificar que los datos se cargaron correctamente
+            displayDataInTable(jsonData); // Llamada para mostrar los datos en la tabla
+        })
+        .catch(error => {
+            console.error('Error al cargar el archivo Excel:', error);
+            alert('No se pudo cargar el archivo Excel.');
         });
+}
 
-        guardarDatos(); // Actualizar el almacenamiento local
+// Función para mostrar los datos del archivo Excel en la tabla
+function displayDataInTable(data) {
+    const tableBody = document.querySelector('#stockTable tbody');
+    tableBody.innerHTML = ''; // Limpiar la tabla antes de mostrar nuevos datos
+
+    data.forEach((row, index) => {
+        const tr = document.createElement('tr');
+
+        // Crear celdas para cada columna
+        const cellTitulo = document.createElement('td');
+        cellTitulo.textContent = row.Titulo || '';
+        tr.appendChild(cellTitulo);
+
+        const cellAutor = document.createElement('td');
+        cellAutor.textContent = row.Autor || '';
+        tr.appendChild(cellAutor);
+
+        const cellCodigo = document.createElement('td');
+        cellCodigo.textContent = row.Codigo || '';
+        tr.appendChild(cellCodigo);
+
+        const cellUbicacion = document.createElement('td');
+        cellUbicacion.textContent = row.Ubicacion || '';
+        tr.appendChild(cellUbicacion);
+
+        tableBody.appendChild(tr);
     });
-});
+}
+
+// Llama a la función al cargar la página
+window.onload = loadExcelFile;
